@@ -26,29 +26,65 @@ A full subtractor is a combinational circuit that performs subtraction involving
 Diff = A ⊕ B ⊕ Bin B = A'Bin + A'B + BBin
 
 ## Procedure
+It can be implemented using two half subtractors and one OR gate as: Giving one half subtractor the inputs A and B that gives outputs Diff1 and B1. Giving second half subtractor inputs Bin and Diff1 from first subtractor that gives outputs B2 and D (difference for the full subtractor).
 
 
 
-Write the detailed procedure here 
 
 
 ## Program:
 /*
 Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: S.Subashini
+RegisterNumber:  212222240106
+
+```
+module half
+_sub(x, y, d, b, x1);
+input x,y;
+output x1, d, b;
+xor(d, x, y);
+not(x1, x);
+and(b, x1, y);
+endmodule
+
+module full_sub(x, y, z, d, b, x1, x2, x3, x4, x5);
+input x,y,z;
+output d, b, x1, x2, x3, x4 ,x5;
+xor(x1, x, y);
+xor(d, x1, z);
+not(x2, x);
+and(x3, x2, y);
+and(x4, x3, z);
+and(x5, y, z);
+or(b, x3, x4, x5);
+endmodule
+```
 */
 
 ## Output:
+##  RTL realization
+![image](https://user-images.githubusercontent.com/119404951/233857625-e4635a6f-7f75-46ee-99ae-f8f72b827336.png)
+
+![image](https://user-images.githubusercontent.com/119404951/233857842-1b68713a-3510-4687-8348-0e4dc67492e0.png)
+
+
+
 
 ## Truthtable
+![image](https://user-images.githubusercontent.com/119404951/233857944-123a6602-8b4d-43f4-bb74-c1138cf09ccf.png)
+![image](https://user-images.githubusercontent.com/119404951/233857960-756ff962-28dc-4737-bcca-db8a04a53ed0.png)
 
 
 
-##  RTL realization
+
+
 
 
 ## Timing diagram 
+![image](https://user-images.githubusercontent.com/119404951/233857863-ac46e36c-dffa-4d25-969e-edc994e7c656.png)
+![image](https://user-images.githubusercontent.com/119404951/233857881-39795f86-54a3-4618-be82-dad5b5725a46.png)
+
 
 ## Result:
 Thus the half subtractor and full subtractor circuits are designed and the truth tables is verified using quartus software.
